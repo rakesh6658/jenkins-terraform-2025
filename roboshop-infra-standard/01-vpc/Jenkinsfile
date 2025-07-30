@@ -30,11 +30,11 @@
         //     }
         // }
 
-        stage('apply') {
+        stage('destroy') {
             steps {
                 sh '''
                 cd roboshop-infra-standard/01-vpc
-                
+                terraform init -upgrade
                terraform destroy -auto-approve
                '''
             }

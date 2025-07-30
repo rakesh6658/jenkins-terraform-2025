@@ -6,6 +6,9 @@
             steps {
                 sh 'ls -ltr'
                 sh 'pwd'
+                sh '''
+                cd roboshop-infra-standard/01-vpc
+                '''
                sh 'terraform init'
             }
         }

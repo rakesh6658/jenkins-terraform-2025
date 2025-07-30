@@ -4,6 +4,8 @@
     stages {
         stage('init') {
             steps {
+                sh 'ls -ltr'
+                sh 'pwd'
                sh 'terraform init'
             }
         }
@@ -12,6 +14,11 @@
             steps {
                 sh 'terraform plan'
                 
+            }
+        }
+        stage('Manual Approval') {
+            steps {
+                input message: 'Do you want to proceed with apply?', ok: 'Yes, Apply'
             }
         }
 

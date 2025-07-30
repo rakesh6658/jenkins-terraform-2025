@@ -6,19 +6,21 @@
             steps {
                 sh 'ls -ltr'
                 sh 'pwd'
+                
                 sh '''
-                cd roboshop-infra-standard/01-vpc
-                '''
-               sh 'terraform init'
-            }
+            cd roboshop-infra-standard/01-vpc
+            terraform init
+        '''            
         }
+            }
 
         stage('plan') {
             steps {
                 sh '''
                 cd roboshop-infra-standard/01-vpc
+                
+                terraform plan
                 '''
-                sh 'terraform plan'
                 
             }
         }
@@ -32,8 +34,9 @@
             steps {
                 sh '''
                 cd roboshop-infra-standard/01-vpc
-                '''
-               sh 'terraform apply -auto-aprove'
+                
+               terraform apply -auto-approve
+               '''
             }
         }
     }
